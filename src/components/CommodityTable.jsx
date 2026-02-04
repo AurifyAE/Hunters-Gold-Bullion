@@ -72,7 +72,7 @@ const CommodityTable = ({ commodities }) => {
         mt: "1.2vw",
         borderRadius: "0.8vw",
         overflow: "hidden",
-        border: "1px solid rgba(177 227 241 / 0.51)",
+        border: "0.1vw solid rgba(177 227 241 / 0.51)",
         boxShadow: "0 0.8vw 2.8vw rgba(0,0,0,0.7), inset 0 0 1.6vw rgba(30,20,10,0.35)",
         background: "linear-gradient(175deg, #0f1a20 0%, #0a0f15 100%)",
       }}

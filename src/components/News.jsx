@@ -4,9 +4,7 @@ import { Box, Typography } from "@mui/material";
 const NewsTicker = ({ newsItems = [] }) => {
   // Ensure enough items for smooth scrolling
   const tickerItems =
-    newsItems.length <= 1
-      ? Array(5).fill(newsItems[0])
-      : newsItems;
+    newsItems.length <= 1 ? Array(5).fill(newsItems[0]) : newsItems;
 
   return (
     <Box
@@ -16,18 +14,17 @@ const NewsTicker = ({ newsItems = [] }) => {
         display: "flex",
         alignItems: "center",
         overflow: "hidden",
-        background:
-          " rgba(0,0,0,.4)",
-        borderTop: "1px solid rgba(255,255,255,.1)",
-        borderBottom: "1px solid rgba(255,255,255,.1)",
+        background: " rgba(0,0,0,.4)",
+        borderTop: "1px solid",
+        borderImage:
+          "linear-gradient(90deg,  #C9F89269,  #92F8C069, #B6E7FC57) 1",
       }}
     >
       {/* LEFT BRAND */}
       <Typography
         sx={{
           color: "#ffffff",
-          background:
-            "linear-gradient(180deg, rgba(0,0,0), rgba(20,20,20))",
+          background: "linear-gradient(180deg, rgba(0,0,0), rgba(20,20,20))",
           fontSize: "1.2vw",
           whiteSpace: "nowrap",
           padding: "0 1.5vw",
@@ -35,10 +32,13 @@ const NewsTicker = ({ newsItems = [] }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          borderRight: "1px solid",
+          borderImage:
+            "linear-gradient(90deg,  #C9F89269,  #92F8C069, #B6E7FC57) 1",
           flexShrink: 0,
         }}
       >
-HUNTERS GOLD BULLION 
+        HUNTERS GOLD BULLION
       </Typography>
 
       {/* SCROLL AREA */}

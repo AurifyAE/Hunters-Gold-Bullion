@@ -17,6 +17,7 @@ import { useSpotRate } from "../context/SpotRateContext";
 import WorldClock from "../components/WorldClock";
 import TradingViewMarketTable from "../components/TradingViewMarket";
 import YoutubeVideo from "../components/YoutubeVideo";
+import PoweredByAurify from "../components/PoweredByAurify";
 
 function TvScreen() {
   const [showLimitModal, setShowLimitModal] = useState(false);
@@ -41,7 +42,7 @@ function TvScreen() {
     goldBidSpread,
     goldAskSpread,
     silverBidSpread,
-    silverAskSpread
+    silverAskSpread,
   );
 
   useEffect(() => {
@@ -75,7 +76,6 @@ function TvScreen() {
         setNews(newsRes.data.news.news);
 
         console.log(newsRes.data);
-
       } catch (error) {
         console.log("Error fetching data:", error);
         setError("An error occurred while fetching data");
@@ -155,11 +155,19 @@ function TvScreen() {
     return () => clearInterval(interval);
   }, []);
 
-
-
   return (
-    <Box sx={{ minHeight: "100vh", color: "white", padding: "0 2vw ", display: 'flex', alignItems: 'center', backgroundImage: 'linear-gradient(220deg, #1f1f1f, #000)' }}>
-      <div className='background_lines'>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        color: "white",
+        padding: "0 2vw ",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundImage: "linear-gradient(220deg, #1f1f1f, #000)",
+      }}
+    >
+      <div className="background_lines">
         <img src="/images/background.png" alt="Background Lines" />
       </div>
       {/* Grid */}
@@ -170,61 +178,57 @@ function TvScreen() {
         minHeight="100%"
         // alignItems="flex-start"
         justifyContent="space-between"
-        padding='1vw'
-        border='1px solid #34291a'
-        flexWrap='wrap'
-        zIndex='1'
-        position='relative'
-
+        padding="1vw"
+        border="1px solid #D4F5F73F"
+        flexWrap="wrap"
+        zIndex="1"
+        position="relative"
+        margin="0"
       >
-
         {/* Side: Commodity Table */}
-        <Grid item md={5.5}
-          display='flex' flexDirection='column'
+        <Grid
+          item
+          md={6}
+          display="flex"
+          flexDirection="column"
           // justifyContent='space-between'
-          justifyContent='space-around'
+          justifyContent="space-around"
         >
-
-          <Box className="flex flex-row items-center justify-around ">
+          <Box className="flex flex-wrap items-center justify-around ">
             <Box
               sx={{
                 height: "auto",
-                width: "20vw",
-                marginBottom: '1vw'
+                width: "18vw",
+                marginBottom: "2vw",
               }}
             >
               <img src={JasMetalLogo} alt="" />
             </Box>
 
             <WorldClock />
-
           </Box>
           <CommodityTable commodities={commodities} />
-
-
-
         </Grid>
 
         {/* Side: SpotRate & Date Time */}
-        <Grid item md={6.5}>
+        <Grid item md={6}>
+          <SpotRate />
 
-
-        <SpotRate />
-
-
+          <PoweredByAurify />
         </Grid>
 
-
-        <Grid md={12} sx={{
-          position: 'fixed',
-          bottom: '0',
-          left: '0',
-        }}>
+        <Grid
+          md={12}
+          sx={{
+            position: "fixed",
+            bottom: "0",
+            width: "100%",
+            left: "0",
+          }}
+        >
           <NewsTicker newsItems={news} />
         </Grid>
-
       </Grid>
-
     </Box>
   );
 }

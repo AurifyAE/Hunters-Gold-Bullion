@@ -68,7 +68,7 @@ const SpotRate = () => {
           position: "relative",
           flex: 1,
           bgcolor: "rgba(20,20,35,0.65)",
-          border: "1px solid rgba(80,80,120,0.4)",
+          border: "0.1vw solid rgba(80,80,120,0.4)",
           borderRadius: "0.9vw",
           p: "0.9vw 1.1vw",
           display: "flex",
@@ -87,7 +87,7 @@ const SpotRate = () => {
             fontWeight: 600,
             letterSpacing: "0.25vw",
             color: "#88aaff",
-            textShadow: "0 0 0.8vw #5577ff",
+            textShadow: "0 0 0.8vw #5577FF86",
           }}
         >
           {label}
@@ -122,7 +122,7 @@ const SpotRate = () => {
     );
   };
 
-  const MetalPanel = ({ titleImg, metalImg, data, bidDir, askDir, theme }) => {
+  const MetalPanel = ({ metalImg, data, bidDir, askDir, theme }) => {
     const isGold = theme === "gold";
 
     return (
@@ -130,9 +130,9 @@ const SpotRate = () => {
         sx={{
           position: "relative",
           bgcolor: "linear-gradient(135deg, #0f0f1a 0%, #05050f 100%)",
-          border: "1px solid rgba(60,60,90,0.4)",
+          border: "0.1vw solid rgba(60,60,90,0.4)",
           overflow: "hidden",
-          borderRadius: '20px',
+          borderRadius: '1vw',
           boxShadow: "0 0.8vw 3.2vw rgba(0,0,0,0.7)",
           backdropFilter: "blur(0.4vw)",
           ...(isGold
@@ -171,7 +171,7 @@ const SpotRate = () => {
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
                 color: "transparent",
-                textShadow: isGold ? "0 0 1.4vw #ffdd55" : "0 0 1vw rgba(255,255,255,0.4)",
+                textShadow: isGold ? "0 0 1.4vw #FFDD559A" : "0 0 1vw rgba(255,255,255,0.4)",
               }}
             >
               {isGold ? "GOLD" : "SILVER"}
@@ -193,13 +193,13 @@ const SpotRate = () => {
           {/* Right: HIGH / LOW */}
           <Typography
             sx={{
-              fontSize: "1.15vw",
+              fontSize: "1.5vw",
               letterSpacing: "0.15vw",
               opacity: 0.9,
               "& .hl-value-high": {
                 color: "#aaffff",
                 fontWeight: 700,
-                textShadow: "0 0 1vw #44ddff",
+                textShadow: "0 0 1vw #44DDFFA2",
               },
               "& .hl-value-low": {
                 color: "#ff6b6b",
