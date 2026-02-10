@@ -161,6 +161,7 @@ function TvScreen() {
         minHeight: "100vh",
         color: "white",
         padding: "0 2vw ",
+        pb: " 3vw ",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -168,7 +169,8 @@ function TvScreen() {
       }}
     >
       <div className="background_lines">
-        <img src="/images/background.png" alt="Background Lines" />
+        {/* <img src="/images/background.png" alt="Background Lines" /> */}
+        <img src="/images/background4.png" alt="Background Lines" />
       </div>
       {/* Grid */}
       <Grid
@@ -198,11 +200,11 @@ function TvScreen() {
             <Box
               sx={{
                 height: "auto",
-                width: "18vw",
+                width: "23vw",
                 marginBottom: "2vw",
               }}
             >
-              <img src={JasMetalLogo} alt="" />
+              <img src={JasMetalLogo} alt="" className="object-contain w-full" />
             </Box>
 
             <WorldClock />
