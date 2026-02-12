@@ -3,9 +3,7 @@ import { Box, Typography } from "@mui/material";
 import { useSpotRate } from "../context/SpotRateContext";
 
 import goldImg from "/icons/gold-biscut.png";
-import goldLabel from "/icons/gold-icon.svg";
 import silverImg from "/icons/silver-biscut.png";
-import silverLabel from "/icons/silver-icon.svg";
 
 const SpotRate = () => {
   const { goldData, silverData } = useSpotRate();
@@ -233,7 +231,7 @@ const SpotRate = () => {
     <Box sx={{ p: "1.5vw 1vw", fontFamily: '"Orbitron", "Segoe UI", sans-serif' }}>
       <Box sx={{ display: "flex", flexDirection: "column", gap: "2vw", maxWidth: "58vw", mx: "auto" }}>
         <MetalPanel
-          titleImg={goldLabel}
+          // titleImg={goldLabel}
           metalImg={goldImg}
           data={goldData}
           bidDir={goldBidDir}
@@ -242,7 +240,7 @@ const SpotRate = () => {
         />
 
         <MetalPanel
-          titleImg={silverLabel}
+          // titleImg={silverLabel}
           metalImg={silverImg}
           data={silverData}
           bidDir={silverBidDir}

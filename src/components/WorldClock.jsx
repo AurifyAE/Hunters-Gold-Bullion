@@ -4,9 +4,9 @@ import { Box, Typography } from "@mui/material";
 const WorldClockHorizontal = () => {
   const [times, setTimes] = useState({
     date: "",
-    india: "",
     uae: "",
-    london: "",
+    usa: "",
+    uk: "",
   });
 
   useEffect(() => {
@@ -30,26 +30,26 @@ const WorldClockHorizontal = () => {
         hour12: true,
       };
 
-      const indiaTime = now.toLocaleTimeString("en-US", {
-        ...timeOptions,
-        timeZone: "Asia/Kolkata",
-      });
-
       const uaeTime = now.toLocaleTimeString("en-US", {
         ...timeOptions,
         timeZone: "Asia/Dubai",
       });
 
-      const londonTime = now.toLocaleTimeString("en-US", {
+      const ukTime = now.toLocaleTimeString("en-US", {
         ...timeOptions,
         timeZone: "Europe/London",
       });
 
+      const usaTime = now.toLocaleTimeString("en-US", {
+        ...timeOptions,
+        timeZone: "America/New_York", // You can change to LA/Chicago if needed
+      });
+
       setTimes({
         date: dateStr,
-        india: indiaTime,
         uae: uaeTime,
-        london: londonTime,
+        usa: usaTime,
+        uk: ukTime,
       });
     };
 
@@ -93,70 +93,43 @@ const WorldClockHorizontal = () => {
         </Typography>
       </Box>
 
-      {/* India Time */}
       <Box sx={{ textAlign: "center" }}>
-        <Typography
-          sx={{
-            fontSize: "1.4vw",
-            fontWeight: 600,
-            color: "#70DDF0",
-            letterSpacing: "0.8px",
-          }}
-        >
-          India
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: "1.6vw",
-            fontWeight: 500,
-            color: "#ffffff",
-          }}
-        >
-          {times.india || "--:-- AM"}
-        </Typography>
-      </Box>
 
-      {/* UAE Time */}
-      <Box sx={{ textAlign: "center" }}>
-        <Typography
-          sx={{
-            fontSize: "1.4vw",
-            fontWeight: 600,
-            color: "#70DDF0",
-          }}
-        >
+        <Typography sx={{ display: 'flex', alignItems: 'center', gap: '0.5vw', fontSize: "1.4vw", fontWeight: 600, color: "#70DDF0" }}>
+          <Box sx={{ width: "3vw" }}>
+            <img src='/icons/uae.png'
+            />
+          </Box>
           UAE
         </Typography>
-        <Typography
-          sx={{
-            fontSize: "1.6vw",
-            fontWeight: 500,
-            color: "#ffffff",
-          }}
-        >
+        <Typography sx={{ fontSize: "1.6vw", color: "#fff" }}>
           {times.uae || "--:-- AM"}
         </Typography>
       </Box>
 
-      {/* London Time */}
+      {/* USA */}
       <Box sx={{ textAlign: "center" }}>
-        <Typography
-          sx={{
-            fontSize: "1.4vw",
-            fontWeight: 600,
-            color: "#70DDF0",
-          }}
-        >
-          London
+        <Typography sx={{ display: 'flex', alignItems: 'center', gap: '0.5vw', fontSize: "1.4vw", fontWeight: 600, color: "#70DDF0" }}>
+          <Box sx={{ width: "3vw" }}>
+            <img src='/icons/usa.png'
+            />
+          </Box>USA
         </Typography>
-        <Typography
-          sx={{
-            fontSize: "1.6vw",
-            fontWeight: 500,
-            color: "#ffffff",
-          }}
-        >
-          {times.london || "--:-- AM"}
+        <Typography sx={{ fontSize: "1.6vw", color: "#fff" }}>
+          {times.usa || "--:-- AM"}
+        </Typography>
+      </Box>
+
+      {/* UK */}
+      <Box sx={{ textAlign: "center" }}>
+        <Typography sx={{ display: 'flex', alignItems: 'center', gap: '0.5vw', fontSize: "1.4vw", fontWeight: 600, color: "#70DDF0" }}>
+          <Box sx={{ width: "3vw" }}>
+            <img src='/icons/uk.png'
+            />
+          </Box> UK
+        </Typography>
+        <Typography sx={{ fontSize: "1.6vw", color: "#fff" }}>
+          {times.uk || "--:-- AM"}
         </Typography>
       </Box>
     </Box>

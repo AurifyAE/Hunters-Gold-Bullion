@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { useSpotRate } from "../context/SpotRateContext";
 
-import dirhamIcon from "/icons/dirham-icon.svg";
 
 const OUNCE = 31.103;
 const AED = 3.674;
@@ -81,7 +80,7 @@ const CommodityTable = ({ commodities }) => {
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: "40% 20% 20% 20%",
+          gridTemplateColumns: "1fr 1fr 1fr",
           bgcolor: "rgba(18, 28, 35, 0.92)",
           borderBottom: "1px solid rgba(180, 140, 60, 0.38)",
           py: "0.9vw",
@@ -111,7 +110,7 @@ const CommodityTable = ({ commodities }) => {
           Unit
         </Typography>
 
-        <Typography
+        {/* <Typography
           sx={{
             fontSize: "1.2vw",
             fontWeight: 600,
@@ -121,14 +120,14 @@ const CommodityTable = ({ commodities }) => {
           }}
         >
           BID
-        </Typography>
+        </Typography> */}
 
         <Typography
           sx={{
             fontSize: "1.2vw",
             fontWeight: 600,
             color: "#e3c078",
-            textAlign: "right",
+            textAlign: "center",
           }}
         >
           ASK
@@ -153,7 +152,7 @@ const CommodityTable = ({ commodities }) => {
             key={index}
             sx={{
               display: "grid",
-              gridTemplateColumns: "40% 20% 20% 20%",
+              gridTemplateColumns: "1fr 1fr 1fr",
               alignItems: "center",
               py: "1vw",
               px: "1.5vw",
@@ -183,7 +182,7 @@ const CommodityTable = ({ commodities }) => {
               {row.unit}
             </Typography>
 
-            <Box
+            {/* <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -202,13 +201,13 @@ const CommodityTable = ({ commodities }) => {
                 {formatPrice(row.bid)}
               </Typography>
               
-            </Box>
+            </Box> */}
 
             <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "flex-end",
+                justifyContent: "center",
                 gap: "0.5vw",
               }}
             >
