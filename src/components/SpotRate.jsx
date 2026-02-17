@@ -206,11 +206,11 @@ const SpotRate = () => {
               },
             }}
           >
-            HIGH <span className="hl-value-high">{data.high}</span>
+            LOW <span className="hl-value-low">{data.low}</span>
             <Box component="span" sx={{ mx: "0.9vw", opacity: 0.6 }}>
               /
             </Box>
-            LOW <span className="hl-value-low">{data.low}</span>
+            HIGH <span className="hl-value-high">{data.high}</span>
           </Typography>
         </Box>
 

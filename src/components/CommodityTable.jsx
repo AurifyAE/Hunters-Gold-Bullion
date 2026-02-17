@@ -54,9 +54,8 @@ const CommodityTable = ({ commodities }) => {
       const ask = baseAsk + (Number(item.sellCharge) || 0) + (Number(item.sellPremium) || 0);
 
       return {
-        display: item.purity
-          ? `${item.purity} ${item.metal === "Gold Ten TOLA" ? "Gold" : item.metal}`
-          : item.metal,
+        purity: item.purity,
+        metal: item.metal,
         unit: `${item.unit} ${item.weight}`,
         bid,
         ask,
@@ -80,12 +79,13 @@ const CommodityTable = ({ commodities }) => {
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
+          // gridTemplateColumns: "1fr 1fr 1fr",
+          gridTemplateColumns: "1.4fr 0.8fr 0.8fr",
           bgcolor: "rgba(18, 28, 35, 0.92)",
           borderBottom: "1px solid rgba(180, 140, 60, 0.38)",
           py: "0.9vw",
           px: "1.5vw",
-          alignItems: "center",
+          alignItems: "end",
         }}
       >
         <Typography
@@ -94,6 +94,7 @@ const CommodityTable = ({ commodities }) => {
             fontWeight: 600,
             color: "#e3c078",
             letterSpacing: "0.04vw",
+            textAlign: "start",
           }}
         >
           Commodity
@@ -104,7 +105,7 @@ const CommodityTable = ({ commodities }) => {
             fontSize: "1.2vw",
             fontWeight: 600,
             color: "#e3c078",
-            textAlign: "center",
+            textAlign: "start",
           }}
         >
           Unit
@@ -127,7 +128,7 @@ const CommodityTable = ({ commodities }) => {
             fontSize: "1.2vw",
             fontWeight: 600,
             color: "#e3c078",
-            textAlign: "center",
+            textAlign: "start",
           }}
         >
           ASK
@@ -152,31 +153,46 @@ const CommodityTable = ({ commodities }) => {
             key={index}
             sx={{
               display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr",
-              alignItems: "center",
+              gridTemplateColumns: "1.4fr 0.8fr 0.8fr",
+              alignItems: "end",
               py: "1vw",
               px: "1.5vw",
               borderBottom: index < rows.length - 1 ? "1px solid rgba(80,90,100,0.18)" : "none",
               background: index % 2 === 0 ? "rgba(15,25,32,0.3)" : "transparent",
               transition: "background 0.2s",
-            
+
             }}
           >
             <Typography
               sx={{
                 fontSize: "1.24vw",
-                fontWeight: 500,
+                fontWeight: 800,
                 color: "#e8e0c8",
+                display: 'flex',
+                alignItems: 'center ',
+                justifyContent: 'start',
+                gap: '0.3vw'
+
               }}
             >
-              {row.display}
+              {row.metal}
+              <Typography
+                sx={{
+                  fontSize: "1vw",
+                  fontWeight: 400,
+                  color: "#e8e0c8",
+                  // mb:'-0.5vw'
+                }}
+              >
+                {row.purity}
+              </Typography>
             </Typography>
 
             <Typography
               sx={{
                 fontSize: "1.18vw",
                 color: "#d0d8e0",
-                textAlign: "center",
+                textAlign: "start",
               }}
             >
               {row.unit}
@@ -207,7 +223,7 @@ const CommodityTable = ({ commodities }) => {
               sx={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center",
+                justifyContent: "start",
                 gap: "0.5vw",
               }}
             >
@@ -220,8 +236,8 @@ const CommodityTable = ({ commodities }) => {
               >
                 {formatPrice(row.ask)}
               </Typography>
-            
-             
+
+
             </Box>
           </Box>
         ))
