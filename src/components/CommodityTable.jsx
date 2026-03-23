@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { useSpotRate } from "../context/SpotRateContext";
 
-
 const OUNCE = 31.103;
 const AED = 3.674;
 
@@ -39,29 +38,36 @@ const CommodityTable = ({ commodities }) => {
     });
   };
 
-  const rows = commodities
-    ?.map((item) => {
-      const spot = getSpot(item.metal);
-      if (!spot) return null;
+  const rows =
+    commodities
+      ?.map((item) => {
+        const spot = getSpot(item.metal);
+        if (!spot) return null;
 
-      const mult = UNIT_MULTIPLIER[item.weight] || 1;
-      const pur = purityFactor(item.purity);
+        const mult = UNIT_MULTIPLIER[item.weight] || 1;
+        const pur = purityFactor(item.purity);
 
-      const baseBid = (spot.bid / OUNCE) * AED * mult * item.unit * pur;
-      const baseAsk = (spot.ask / OUNCE) * AED * mult * item.unit * pur;
+        const baseBid = (spot.bid / OUNCE) * AED * mult * item.unit * pur;
+        const baseAsk = (spot.ask / OUNCE) * AED * mult * item.unit * pur;
 
-      const bid = baseBid + (Number(item.buyCharge) || 0) + (Number(item.buyPremium) || 0);
-      const ask = baseAsk + (Number(item.sellCharge) || 0) + (Number(item.sellPremium) || 0);
+        const bid =
+          baseBid +
+          (Number(item.buyCharge) || 0) +
+          (Number(item.buyPremium) || 0);
+        const ask =
+          baseAsk +
+          (Number(item.sellCharge) || 0) +
+          (Number(item.sellPremium) || 0);
 
-      return {
-        purity: item.purity,
-        metal: item.metal,
-        unit: `${item.unit} ${item.weight}`,
-        bid,
-        ask,
-      };
-    })
-    .filter(Boolean) ?? [];
+        return {
+          purity: item.purity,
+          metal: item.metal,
+          unit: `${item.unit} ${item.weight}`,
+          bid,
+          ask,
+        };
+      })
+      .filter(Boolean) ?? [];
 
   return (
     <Box
@@ -71,7 +77,8 @@ const CommodityTable = ({ commodities }) => {
         borderRadius: "0.8vw",
         overflow: "hidden",
         border: "0.1vw solid rgba(177 227 241 / 0.51)",
-        boxShadow: "0 0.8vw 2.8vw rgba(0,0,0,0.7), inset 0 0 1.6vw rgba(30,20,10,0.35)",
+        boxShadow:
+          "0 0.8vw 2.8vw rgba(0,0,0,0.7), inset 0 0 1.6vw rgba(30,20,10,0.35)",
         background: "linear-gradient(175deg, #0f1a20 0%, #0a0f15 100%)",
       }}
     >
@@ -134,71 +141,79 @@ const CommodityTable = ({ commodities }) => {
           ASK
         </Typography>
       </Box>
-
-      {/* Rows */}
-      {rows.length === 0 ? (
-        <Typography
-          sx={{
-            py: "3vw",
-            textAlign: "center",
-            color: "rgba(227,192,120,0.4)",
-            fontSize: "1.25vw",
-          }}
-        >
-          No data available
-        </Typography>
-      ) : (
-        rows.map((row, index) => (
-          <Box
-            key={index}
+      <Box
+        sx={{
+          overflow: "auto",
+          scrollbarWidth: "none",
+          maxHeight: { xs: "auto", sm: "18vw" },
+        }}
+      >
+        {/* Rows */}
+        {rows.length === 0 ? (
+          <Typography
             sx={{
-              display: "grid",
-              gridTemplateColumns: "1.4fr 0.8fr 0.8fr",
-              alignItems: "end",
-              py: "1vw",
-              px: "1.5vw",
-              borderBottom: index < rows.length - 1 ? "1px solid rgba(80,90,100,0.18)" : "none",
-              background: index % 2 === 0 ? "rgba(15,25,32,0.3)" : "transparent",
-              transition: "background 0.2s",
-
+              py: "3vw",
+              textAlign: "center",
+              color: "rgba(227,192,120,0.4)",
+              fontSize: "1.25vw",
             }}
           >
-            <Typography
+            No data available
+          </Typography>
+        ) : (
+          rows.map((row, index) => (
+            <Box
+              key={index}
               sx={{
-                fontSize: "1.24vw",
-                fontWeight: 800,
-                color: "#e8e0c8",
-                display: 'flex',
-                alignItems: 'center ',
-                justifyContent: 'start',
-                gap: '0.3vw'
-
+                display: "grid",
+                gridTemplateColumns: "1.4fr 0.8fr 0.8fr",
+                alignItems: "end",
+                py: "1vw",
+                px: "1.5vw",
+                borderBottom:
+                  index < rows.length - 1
+                    ? "1px solid rgba(80,90,100,0.18)"
+                    : "none",
+                background:
+                  index % 2 === 0 ? "rgba(15,25,32,0.3)" : "transparent",
+                transition: "background 0.2s",
               }}
             >
-              {row.metal}
               <Typography
                 sx={{
-                  fontSize: "1vw",
-                  fontWeight: 400,
+                  fontSize: "1.24vw",
+                  fontWeight: 800,
                   color: "#e8e0c8",
-                  // mb:'-0.5vw'
+                  display: "flex",
+                  alignItems: "center ",
+                  justifyContent: "start",
+                  gap: "0.3vw",
                 }}
               >
-                {row.purity}
+                {row.metal}
+                <Typography
+                  sx={{
+                    fontSize: "1vw",
+                    fontWeight: 400,
+                    color: "#e8e0c8",
+                    // mb:'-0.5vw'
+                  }}
+                >
+                  {row.purity}
+                </Typography>
               </Typography>
-            </Typography>
 
-            <Typography
-              sx={{
-                fontSize: "1.18vw",
-                color: "#d0d8e0",
-                textAlign: "start",
-              }}
-            >
-              {row.unit}
-            </Typography>
+              <Typography
+                sx={{
+                  fontSize: "1.18vw",
+                  color: "#d0d8e0",
+                  textAlign: "start",
+                }}
+              >
+                {row.unit}
+              </Typography>
 
-            {/* <Box
+              {/* <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -219,29 +234,28 @@ const CommodityTable = ({ commodities }) => {
               
             </Box> */}
 
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "start",
-                gap: "0.5vw",
-              }}
-            >
-              <Typography
+              <Box
                 sx={{
-                  fontSize: "1.32vw",
-                  fontWeight: 600,
-                  color: "#ff88aa", // soft pink ASK
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "start",
+                  gap: "0.5vw",
                 }}
               >
-                {formatPrice(row.ask)}
-              </Typography>
-
-
+                <Typography
+                  sx={{
+                    fontSize: "1.32vw",
+                    fontWeight: 600,
+                    color: "#ff88aa", // soft pink ASK
+                  }}
+                >
+                  {formatPrice(row.ask)}
+                </Typography>
+              </Box>
             </Box>
-          </Box>
-        ))
-      )}
+          ))
+        )}
+      </Box>
     </Box>
   );
 };
