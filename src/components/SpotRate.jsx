@@ -35,24 +35,42 @@ const SpotRate = () => {
   };
 
   useEffect(() => {
-    prev.current.goldBid = detectChange(prev.current.goldBid, goldData.bid, setGoldBidDir);
+    prev.current.goldBid = detectChange(
+      prev.current.goldBid,
+      goldData.bid,
+      setGoldBidDir,
+    );
   }, [goldData.bid]);
 
   useEffect(() => {
-    prev.current.goldAsk = detectChange(prev.current.goldAsk, goldData.ask, setGoldAskDir);
+    prev.current.goldAsk = detectChange(
+      prev.current.goldAsk,
+      goldData.ask,
+      setGoldAskDir,
+    );
   }, [goldData.ask]);
 
   useEffect(() => {
-    prev.current.silverBid = detectChange(prev.current.silverBid, silverData.bid, setSilverBidDir);
+    prev.current.silverBid = detectChange(
+      prev.current.silverBid,
+      silverData.bid,
+      setSilverBidDir,
+    );
   }, [silverData.bid]);
 
   useEffect(() => {
-    prev.current.silverAsk = detectChange(prev.current.silverAsk, silverData.ask, setSilverAskDir);
+    prev.current.silverAsk = detectChange(
+      prev.current.silverAsk,
+      silverData.ask,
+      setSilverAskDir,
+    );
   }, [silverData.ask]);
 
   const getColors = (dir) => {
-    if (dir === "rise") return { color: "#00ff9d", shadow: "0 0 2.2vw #00ff9d88" };
-    if (dir === "fall") return { color: "#ff3366", shadow: "0 0 2.2vw #ff336688" };
+    if (dir === "rise")
+      return { color: "#00ff9d", shadow: "0 0 2.2vw #00ff9d88" };
+    if (dir === "fall")
+      return { color: "#ff3366", shadow: "0 0 2.2vw #ff336688" };
     return { color: "#f0f8ff", shadow: "0 0 1.4vw #ffffff44" };
   };
 
@@ -68,20 +86,28 @@ const SpotRate = () => {
           bgcolor: "rgba(20,20,35,0.65)",
           border: "0.1vw solid rgba(80,80,120,0.4)",
           borderRadius: "0.9vw",
-          p: "0.9vw 1.1vw",
+          p: { xs: "10px 15px", sm: "0.9vw 1.1vw" },
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           overflow: "hidden",
           ...(hasPulse && {
-            animation: dir === "rise" ? "pulseRise 0.8s ease-out" : "pulseFall 0.8s ease-out",
-            boxShadow: dir === "rise" ? "0 0 0 0 rgba(0,255,157,0.6)" : "0 0 0 0 rgba(255,51,102,0.6)",
+            animation:
+              dir === "rise"
+                ? "pulseRise 0.8s ease-out"
+                : "pulseFall 0.8s ease-out",
+            boxShadow:
+              dir === "rise"
+                ? "0 0 0 0 rgba(0,255,157,0.6)"
+                : "0 0 0 0 rgba(255,51,102,0.6)",
           }),
         }}
       >
         <Typography
           sx={{
-            fontSize: "1.3vw",
+            // fontSize: "1.3vw",
+            fontSize: { xs: "13px", sm: "1.3vw" }, // 👈 responsive font size
+
             fontWeight: 600,
             letterSpacing: "0.25vw",
             color: "#88aaff",
@@ -93,7 +119,9 @@ const SpotRate = () => {
 
         <Typography
           sx={{
-            fontSize: "2.4vw",
+            // fontSize: "2.4vw",
+            fontSize: { xs: "20px", sm: "2.4vw" }, // 👈 responsive font size
+
             fontWeight: 800,
             letterSpacing: "0.18vw",
             textAlign: "center",
@@ -111,7 +139,8 @@ const SpotRate = () => {
           sx={{
             position: "absolute",
             inset: 0,
-            background: "linear-gradient(to bottom, transparent 0%, rgba(120,180,255,0.07) 50%, transparent 100%)",
+            background:
+              "linear-gradient(to bottom, transparent 0%, rgba(120,180,255,0.07) 50%, transparent 100%)",
             animation: "scan 6s linear infinite",
             pointerEvents: "none",
           }}
@@ -130,28 +159,32 @@ const SpotRate = () => {
           bgcolor: "linear-gradient(135deg, #0f0f1a 0%, #05050f 100%)",
           border: "0.1vw solid rgba(60,60,90,0.4)",
           overflow: "hidden",
-          borderRadius: '1vw',
+          borderRadius: "1vw",
           boxShadow: "0 0.8vw 3.2vw rgba(0,0,0,0.7)",
           backdropFilter: "blur(0.4vw)",
           ...(isGold
             ? {
-              borderColor: " #FFD9008A",
-              boxShadow: "0 0 3vw rgba(255 217 0 / 0.11)",
-            }
+                borderColor: " #FFD9008A",
+                boxShadow: "0 0 3vw rgba(255 217 0 / 0.11)",
+              }
             : {
-              borderColor: " #A0A0FF8E",
-              boxShadow: "0 0 3vw rgba(160,180,255,0.15)",
-            }),
+                borderColor: " #A0A0FF8E",
+                boxShadow: "0 0 3vw rgba(160,180,255,0.15)",
+              }),
         }}
       >
         {/* Header with Metal Name + Image + HIGH/LOW */}
         <Box
           sx={{
-            height: "5.8vw",
+            // height: "5.8vw",
+            height: { xs: "50px", sm: "5.8vw" }, // 👈 responsive height
+
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            px: "1.8vw",
+            // px: "1.8vw",
+            px: { xs: "10px", sm: "1.8vw" }, // 👈 responsive padding
+
             borderBottom: "1px solid rgba(100,100,140,0.3)",
             bgcolor: "rgba(12,12,22,0.6)",
           }}
@@ -160,7 +193,9 @@ const SpotRate = () => {
           <Box sx={{ display: "flex", alignItems: "center", gap: "1vw" }}>
             <Typography
               sx={{
-                fontSize: "1.6vw",
+                // fontSize: "1.6vw",
+                fontSize: { xs: "16px", sm: "1.6vw" }, // 👈 responsive font size
+
                 fontWeight: 800,
                 letterSpacing: "0.3vw",
                 background: isGold
@@ -169,20 +204,24 @@ const SpotRate = () => {
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
                 color: "transparent",
-                textShadow: isGold ? "0 0 1.4vw #FFDD559A" : "0 0 1vw rgba(255,255,255,0.4)",
+                textShadow: isGold
+                  ? "0 0 1.4vw #FFDD559A"
+                  : "0 0 1vw rgba(255,255,255,0.4)",
               }}
             >
               {isGold ? "GOLD" : "SILVER"}
             </Typography>
 
-            <Box sx={{ width: "4.5vw" }}>
+            <Box sx={{ width: { xs: "40px", sm: "4.5vw" } }}>
+              {/* <Box sx={{ width: "4.5vw" }}> */}
               <Box
                 component="img"
                 src={metalImg}
                 alt=""
                 sx={{
                   width: "100%",
-                  filter: "drop-shadow(0 0.8vw 2.4vw rgba(0,0,0,0.7)) brightness(1.15) contrast(1.1)",
+                  filter:
+                    "drop-shadow(0 0.8vw 2.4vw rgba(0,0,0,0.7)) brightness(1.15) contrast(1.1)",
                 }}
               />
             </Box>
@@ -191,7 +230,9 @@ const SpotRate = () => {
           {/* Right: HIGH / LOW */}
           <Typography
             sx={{
-              fontSize: "1.5vw",
+              // fontSize: "1.5vw",
+              fontSize: { xs: "15px", sm: "1.5vw" }, // 👈 responsive font size
+
               letterSpacing: "0.15vw",
               opacity: 0.9,
               "& .hl-value-high": {
@@ -215,21 +256,41 @@ const SpotRate = () => {
         </Box>
 
         {/* Price Boxes */}
-        <Box sx={{ p: "1.6vw 1.8vw", display: "flex", flexDirection: "column", gap: "1.5vw" }}>
-          <Box sx={{ display: "flex", gap: "1.2vw" }}>
+        <Box
+          sx={{
+            // p: "1.6vw 1.8vw",
+            p: { xs: "10px 10px", sm: "1.6vw 1.8vw" }, // 👈 responsive padding
+
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.5vw",
+          }}
+        >
+          <Box sx={{ display: "flex", gap: { xs: "12px", sm: "1.2vw" } }}>
+            {/* <Box sx={{ display: "flex", gap: "1.2vw" }}> */}
             <PricePulse label="BID" value={data.bid} dir={bidDir} />
             <PricePulse label="ASK" value={data.ask} dir={askDir} />
           </Box>
         </Box>
-
-
       </Box>
     );
   };
 
   return (
-    <Box sx={{ p: "1.5vw 1vw", fontFamily: '"Orbitron", "Segoe UI", sans-serif' }}>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: "2vw", maxWidth: "58vw", mx: "auto" }}>
+    <Box
+      sx={{ p: "1.5vw 1vw", fontFamily: '"Orbitron", "Segoe UI", sans-serif' }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          // gap: "2vw",
+          gap: { xs: "20px", sm: "2vw" }, // 👈 responsive gap
+
+          maxWidth: { xs: "100%", md: "58vw" },
+          margin: { xs: 0, md: "0 auto" }, // xs = 0, from sm and above = centered
+        }}
+      >
         <MetalPanel
           // titleImg={goldLabel}
           metalImg={goldImg}
@@ -248,8 +309,6 @@ const SpotRate = () => {
           theme="silver"
         />
       </Box>
-
-
     </Box>
   );
 };

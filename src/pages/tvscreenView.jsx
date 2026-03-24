@@ -15,8 +15,6 @@ import {
 import io from "socket.io-client";
 import { useSpotRate } from "../context/SpotRateContext";
 import WorldClock from "../components/WorldClock";
-import TradingViewMarketTable from "../components/TradingViewMarket";
-import YoutubeVideo from "../components/YoutubeVideo";
 import PoweredByAurify from "../components/PoweredByAurify";
 
 function TvScreen() {
@@ -184,12 +182,14 @@ function TvScreen() {
         border="1px solid #D4F5F73F"
         flexWrap="wrap"
         zIndex="1"
+        width="100%"
         position="relative"
         margin="0"
       >
         {/* Side: Commodity Table */}
         <Grid
           item
+          xs={12}
           md={6}
           display="flex"
           flexDirection="column"
@@ -200,11 +200,15 @@ function TvScreen() {
             <Box
               sx={{
                 height: "auto",
-                width: "28vw",
-                marginBottom: "2vw",
+                width: { xs: "40vw", sm: "28vw" },
+                marginBottom: { xs: "20px", sm: "2vw" },
               }}
             >
-              <img src={JasMetalLogo} alt="" className="object-contain w-full" />
+              <img
+                src={JasMetalLogo}
+                alt=""
+                className="object-contain w-full"
+              />
             </Box>
 
             <WorldClock />
@@ -213,23 +217,23 @@ function TvScreen() {
         </Grid>
 
         {/* Side: SpotRate & Date Time */}
-        <Grid item md={6}>
+        <Grid item xs={12} md={6}>
           <SpotRate />
 
           <PoweredByAurify />
         </Grid>
 
-        <Grid
-          md={12}
+        <Box
           sx={{
-            position: "fixed",
-            bottom: "0",
+            position: { xs: "none", sm: "fixed" },
+            bottom: { xs: "0" },
             width: "100%",
-            left: "0",
+            left: { xs: "0" },
+            mt: { xs: "20px", sm: "0" },
           }}
         >
           <NewsTicker newsItems={news} />
-        </Grid>
+        </Box>
       </Grid>
     </Box>
   );
