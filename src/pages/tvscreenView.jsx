@@ -190,6 +190,7 @@ function TvScreen() {
         {/* Side: Commodity Table */}
         <Grid
           item
+          xs={12}
           md={6}
           display="flex"
           flexDirection="column"
@@ -213,7 +214,7 @@ function TvScreen() {
         </Grid>
 
         {/* Side: SpotRate & Date Time */}
-        <Grid item md={6}>
+        <Grid item xs={12} md={6}>
           <SpotRate />
 
           <PoweredByAurify />

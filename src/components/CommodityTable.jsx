@@ -1,6 +1,10 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { useSpotRate } from "../context/SpotRateContext";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/autoplay";
 
 const OUNCE = 31.103;
 const AED = 3.674;
@@ -86,7 +90,6 @@ const CommodityTable = ({ commodities }) => {
       <Box
         sx={{
           display: "grid",
-          // gridTemplateColumns: "1fr 1fr 1fr",
           gridTemplateColumns: "1.4fr 0.8fr 0.8fr",
           bgcolor: "rgba(18, 28, 35, 0.92)",
           borderBottom: "1px solid rgba(180, 140, 60, 0.38)",
@@ -96,164 +99,93 @@ const CommodityTable = ({ commodities }) => {
         }}
       >
         <Typography
-          sx={{
-            fontSize: "1.2vw",
-            fontWeight: 600,
-            color: "#e3c078",
-            letterSpacing: "0.04vw",
-            textAlign: "start",
-          }}
+          sx={{ fontSize: "1.2vw", fontWeight: 600, color: "#e3c078", letterSpacing: "0.04vw", textAlign: "start" }}
         >
           Commodity
         </Typography>
 
         <Typography
-          sx={{
-            fontSize: "1.2vw",
-            fontWeight: 600,
-            color: "#e3c078",
-            textAlign: "start",
-          }}
+          sx={{ fontSize: "1.2vw", fontWeight: 600, color: "#e3c078", textAlign: "start" }}
         >
           Unit
         </Typography>
 
-        {/* <Typography
-          sx={{
-            fontSize: "1.2vw",
-            fontWeight: 600,
-            color: "#e3c078",
-            textAlign: "right",
-            pr: "1.2vw",
-          }}
-        >
-          BID
-        </Typography> */}
-
         <Typography
-          sx={{
-            fontSize: "1.2vw",
-            fontWeight: 600,
-            color: "#e3c078",
-            textAlign: "start",
-          }}
+          sx={{ fontSize: "1.2vw", fontWeight: 600, color: "#e3c078", textAlign: "start" }}
         >
           ASK
         </Typography>
       </Box>
-      <Box
-        sx={{
-          overflow: "auto",
-          scrollbarWidth: "none",
-          maxHeight: { xs: "auto", sm: "18vw" },
-        }}
-      >
-        {/* Rows */}
+
+      {/* Swiper Rows */}
+      <Box sx={{ maxHeight: { xs: "auto", sm: "18vw" } }}>
         {rows.length === 0 ? (
           <Typography
-            sx={{
-              py: "3vw",
-              textAlign: "center",
-              color: "rgba(227,192,120,0.4)",
-              fontSize: "1.25vw",
-            }}
+            sx={{ py: "3vw", textAlign: "center", color: "rgba(227,192,120,0.4)", fontSize: "1.25vw" }}
           >
             No data available
           </Typography>
         ) : (
-          rows.map((row, index) => (
-            <Box
-              key={index}
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "1.4fr 0.8fr 0.8fr",
-                alignItems: "end",
-                py: "1vw",
-                px: "1.5vw",
-                borderBottom:
-                  index < rows.length - 1
-                    ? "1px solid rgba(80,90,100,0.18)"
-                    : "none",
-                background:
-                  index % 2 === 0 ? "rgba(15,25,32,0.3)" : "transparent",
-                transition: "background 0.2s",
-              }}
-            >
-              <Typography
-                sx={{
-                  fontSize: "1.24vw",
-                  fontWeight: 800,
-                  color: "#e8e0c8",
-                  display: "flex",
-                  alignItems: "center ",
-                  justifyContent: "start",
-                  gap: "0.3vw",
-                }}
-              >
-                {row.metal}
-                <Typography
+          <Swiper
+            modules={[Autoplay]}
+            direction="vertical"
+            slidesPerView={4.2}
+            spaceBetween={10}
+            loop={true}
+            autoplay={{
+              delay: 0,
+              disableOnInteraction: false,
+            }}
+            speed={3000}
+            allowTouchMove={false}
+            style={{ height: "18vw" }}
+          >
+            {rows.map((row, index) => (
+              <SwiperSlide key={index}>
+                <Box
                   sx={{
-                    fontSize: "1vw",
-                    fontWeight: 400,
-                    color: "#e8e0c8",
-                    // mb:'-0.5vw'
+                    display: "grid",
+                    gridTemplateColumns: "1.4fr 0.8fr 0.8fr",
+                    alignItems: "end",
+                    py: "1vw",
+                    px: "1.5vw",
+                    borderBottom: "1px solid rgba(80,90,100,0.18)",
+                    background: index % 2 === 0 ? "rgba(15,25,32,0.3)" : "transparent",
                   }}
                 >
-                  {row.purity}
-                </Typography>
-              </Typography>
+                  {/* Commodity */}
+                  <Typography
+                    sx={{
+                      fontSize: "1.24vw",
+                      fontWeight: 800,
+                      color: "#e8e0c8",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "start",
+                      gap: "0.3vw",
+                    }}
+                  >
+                    {row.metal}
+                    <Typography sx={{ fontSize: "1vw", fontWeight: 400, color: "#e8e0c8" }}>
+                      {row.purity}
+                    </Typography>
+                  </Typography>
 
-              <Typography
-                sx={{
-                  fontSize: "1.18vw",
-                  color: "#d0d8e0",
-                  textAlign: "start",
-                }}
-              >
-                {row.unit}
-              </Typography>
+                  {/* Unit */}
+                  <Typography sx={{ fontSize: "1.18vw", color: "#d0d8e0", textAlign: "start" }}>
+                    {row.unit}
+                  </Typography>
 
-              {/* <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "flex-end",
-                gap: "0.5vw",
-                pr: "1.2vw",
-              }}
-            >
-              <Typography
-                sx={{
-                  fontSize: "1.32vw",
-                  fontWeight: 600,
-                  color: "#7df0ff", // cyan/teal BID
-                }}
-              >
-                {formatPrice(row.bid)}
-              </Typography>
-              
-            </Box> */}
-
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "start",
-                  gap: "0.5vw",
-                }}
-              >
-                <Typography
-                  sx={{
-                    fontSize: "1.32vw",
-                    fontWeight: 600,
-                    color: "#ff88aa", // soft pink ASK
-                  }}
-                >
-                  {formatPrice(row.ask)}
-                </Typography>
-              </Box>
-            </Box>
-          ))
+                  {/* ASK */}
+                  <Box sx={{ display: "flex", alignItems: "center", justifyContent: "start", gap: "0.5vw" }}>
+                    <Typography sx={{ fontSize: "1.32vw", fontWeight: 600, color: "#ff88aa" }}>
+                      {formatPrice(row.ask)}
+                    </Typography>
+                  </Box>
+                </Box>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         )}
       </Box>
     </Box>

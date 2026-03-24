@@ -35,24 +35,42 @@ const SpotRate = () => {
   };
 
   useEffect(() => {
-    prev.current.goldBid = detectChange(prev.current.goldBid, goldData.bid, setGoldBidDir);
+    prev.current.goldBid = detectChange(
+      prev.current.goldBid,
+      goldData.bid,
+      setGoldBidDir,
+    );
   }, [goldData.bid]);
 
   useEffect(() => {
-    prev.current.goldAsk = detectChange(prev.current.goldAsk, goldData.ask, setGoldAskDir);
+    prev.current.goldAsk = detectChange(
+      prev.current.goldAsk,
+      goldData.ask,
+      setGoldAskDir,
+    );
   }, [goldData.ask]);
 
   useEffect(() => {
-    prev.current.silverBid = detectChange(prev.current.silverBid, silverData.bid, setSilverBidDir);
+    prev.current.silverBid = detectChange(
+      prev.current.silverBid,
+      silverData.bid,
+      setSilverBidDir,
+    );
   }, [silverData.bid]);
 
   useEffect(() => {
-    prev.current.silverAsk = detectChange(prev.current.silverAsk, silverData.ask, setSilverAskDir);
+    prev.current.silverAsk = detectChange(
+      prev.current.silverAsk,
+      silverData.ask,
+      setSilverAskDir,
+    );
   }, [silverData.ask]);
 
   const getColors = (dir) => {
-    if (dir === "rise") return { color: "#00ff9d", shadow: "0 0 2.2vw #00ff9d88" };
-    if (dir === "fall") return { color: "#ff3366", shadow: "0 0 2.2vw #ff336688" };
+    if (dir === "rise")
+      return { color: "#00ff9d", shadow: "0 0 2.2vw #00ff9d88" };
+    if (dir === "fall")
+      return { color: "#ff3366", shadow: "0 0 2.2vw #ff336688" };
     return { color: "#f0f8ff", shadow: "0 0 1.4vw #ffffff44" };
   };
 
@@ -74,8 +92,14 @@ const SpotRate = () => {
           alignItems: "center",
           overflow: "hidden",
           ...(hasPulse && {
-            animation: dir === "rise" ? "pulseRise 0.8s ease-out" : "pulseFall 0.8s ease-out",
-            boxShadow: dir === "rise" ? "0 0 0 0 rgba(0,255,157,0.6)" : "0 0 0 0 rgba(255,51,102,0.6)",
+            animation:
+              dir === "rise"
+                ? "pulseRise 0.8s ease-out"
+                : "pulseFall 0.8s ease-out",
+            boxShadow:
+              dir === "rise"
+                ? "0 0 0 0 rgba(0,255,157,0.6)"
+                : "0 0 0 0 rgba(255,51,102,0.6)",
           }),
         }}
       >
@@ -111,7 +135,8 @@ const SpotRate = () => {
           sx={{
             position: "absolute",
             inset: 0,
-            background: "linear-gradient(to bottom, transparent 0%, rgba(120,180,255,0.07) 50%, transparent 100%)",
+            background:
+              "linear-gradient(to bottom, transparent 0%, rgba(120,180,255,0.07) 50%, transparent 100%)",
             animation: "scan 6s linear infinite",
             pointerEvents: "none",
           }}
@@ -130,18 +155,18 @@ const SpotRate = () => {
           bgcolor: "linear-gradient(135deg, #0f0f1a 0%, #05050f 100%)",
           border: "0.1vw solid rgba(60,60,90,0.4)",
           overflow: "hidden",
-          borderRadius: '1vw',
+          borderRadius: "1vw",
           boxShadow: "0 0.8vw 3.2vw rgba(0,0,0,0.7)",
           backdropFilter: "blur(0.4vw)",
           ...(isGold
             ? {
-              borderColor: " #FFD9008A",
-              boxShadow: "0 0 3vw rgba(255 217 0 / 0.11)",
-            }
+                borderColor: " #FFD9008A",
+                boxShadow: "0 0 3vw rgba(255 217 0 / 0.11)",
+              }
             : {
-              borderColor: " #A0A0FF8E",
-              boxShadow: "0 0 3vw rgba(160,180,255,0.15)",
-            }),
+                borderColor: " #A0A0FF8E",
+                boxShadow: "0 0 3vw rgba(160,180,255,0.15)",
+              }),
         }}
       >
         {/* Header with Metal Name + Image + HIGH/LOW */}
@@ -169,7 +194,9 @@ const SpotRate = () => {
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
                 color: "transparent",
-                textShadow: isGold ? "0 0 1.4vw #FFDD559A" : "0 0 1vw rgba(255,255,255,0.4)",
+                textShadow: isGold
+                  ? "0 0 1.4vw #FFDD559A"
+                  : "0 0 1vw rgba(255,255,255,0.4)",
               }}
             >
               {isGold ? "GOLD" : "SILVER"}
@@ -182,7 +209,8 @@ const SpotRate = () => {
                 alt=""
                 sx={{
                   width: "100%",
-                  filter: "drop-shadow(0 0.8vw 2.4vw rgba(0,0,0,0.7)) brightness(1.15) contrast(1.1)",
+                  filter:
+                    "drop-shadow(0 0.8vw 2.4vw rgba(0,0,0,0.7)) brightness(1.15) contrast(1.1)",
                 }}
               />
             </Box>
@@ -215,21 +243,36 @@ const SpotRate = () => {
         </Box>
 
         {/* Price Boxes */}
-        <Box sx={{ p: "1.6vw 1.8vw", display: "flex", flexDirection: "column", gap: "1.5vw" }}>
+        <Box
+          sx={{
+            p: "1.6vw 1.8vw",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.5vw",
+          }}
+        >
           <Box sx={{ display: "flex", gap: "1.2vw" }}>
             <PricePulse label="BID" value={data.bid} dir={bidDir} />
             <PricePulse label="ASK" value={data.ask} dir={askDir} />
           </Box>
         </Box>
-
-
       </Box>
     );
   };
 
   return (
-    <Box sx={{ p: "1.5vw 1vw", fontFamily: '"Orbitron", "Segoe UI", sans-serif' }}>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: "2vw", maxWidth: "58vw", mx: "auto" }}>
+    <Box
+      sx={{ p: "1.5vw 1vw", fontFamily: '"Orbitron", "Segoe UI", sans-serif' }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "2vw",
+          maxWidth: { xs: "100%", md: "58vw" },
+          margin: { xs: 0, md: "0 auto" }, // xs = 0, from sm and above = centered
+        }}
+      >
         <MetalPanel
           // titleImg={goldLabel}
           metalImg={goldImg}
@@ -248,8 +291,6 @@ const SpotRate = () => {
           theme="silver"
         />
       </Box>
-
-
     </Box>
   );
 };
