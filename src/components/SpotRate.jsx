@@ -120,7 +120,7 @@ const SpotRate = () => {
         <Typography
           sx={{
             // fontSize: "2.4vw",
-            fontSize: { xs: "24px", sm: "2.4vw" }, // 👈 responsive font size
+            fontSize: { xs: "20px", sm: "2.4vw" }, // 👈 responsive font size
 
             fontWeight: 800,
             letterSpacing: "0.18vw",
