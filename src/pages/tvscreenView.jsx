@@ -15,8 +15,6 @@ import {
 import io from "socket.io-client";
 import { useSpotRate } from "../context/SpotRateContext";
 import WorldClock from "../components/WorldClock";
-import TradingViewMarketTable from "../components/TradingViewMarket";
-import YoutubeVideo from "../components/YoutubeVideo";
 import PoweredByAurify from "../components/PoweredByAurify";
 
 function TvScreen() {
