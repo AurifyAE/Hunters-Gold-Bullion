@@ -221,12 +221,12 @@ function TvScreen() {
         </Grid>
 
         <Grid
-          md={12}
+          xs={12}
           sx={{
-            position: "fixed",
-            bottom: "0",
-            width: "100%",
-            left: "0",
+            position: { xs: "none", sm: "fixed" },
+            bottom: { xs: "0", sm: "0" },
+            width: { xs: "90%" },
+            left: { xs: "0", sm: "0" },
           }}
         >
           <NewsTicker newsItems={news} />

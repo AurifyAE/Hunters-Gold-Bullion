@@ -93,35 +93,70 @@ const CommodityTable = ({ commodities }) => {
           gridTemplateColumns: "1.4fr 0.8fr 0.8fr",
           bgcolor: "rgba(18, 28, 35, 0.92)",
           borderBottom: "1px solid rgba(180, 140, 60, 0.38)",
-          py: "0.9vw",
-          px: "1.5vw",
+          // py: "0.9vw",
+          py: { xs: "12px", sm: "0.9vw" }, // 👈 responsive padding
+
+          px: { xs: "10px", sm: "1.5vw" }, // 👈 responsive padding
+
           alignItems: "end",
         }}
       >
         <Typography
-          sx={{ fontSize: "1.2vw", fontWeight: 600, color: "#e3c078", letterSpacing: "0.04vw", textAlign: "start" }}
+          sx={{
+            // fontSize: "1.2vw",
+            fontSize: { xs: "12px", sm: "1.2vw" }, // 👈 responsive font size
+            fontWeight: 600,
+            color: "#e3c078",
+            letterSpacing: "0.04vw",
+            textAlign: "start",
+          }}
         >
           Commodity
         </Typography>
 
         <Typography
-          sx={{ fontSize: "1.2vw", fontWeight: 600, color: "#e3c078", textAlign: "start" }}
+          sx={{
+            // fontSize: "1.2vw",
+            fontSize: { xs: "12px", sm: "1.2vw" }, // 👈 responsive font size
+
+            fontWeight: 600,
+            color: "#e3c078",
+            textAlign: "start",
+          }}
         >
           Unit
         </Typography>
 
         <Typography
-          sx={{ fontSize: "1.2vw", fontWeight: 600, color: "#e3c078", textAlign: "start" }}
+          sx={{
+            // fontSize: "1.2vw",
+            fontSize: { xs: "12px", sm: "1.2vw" }, // 👈 responsive font size
+
+            fontWeight: 600,
+            color: "#e3c078",
+            textAlign: "start",
+          }}
         >
           ASK
         </Typography>
       </Box>
 
       {/* Swiper Rows */}
-      <Box sx={{ maxHeight: { xs: "auto", sm: "18vw" } }}>
+      {/* <Box sx={{ maxHeight: { xs: "auto", sm: "18vw" } }}> */}
+      <Box
+        sx={{
+          height: { xs: "220px", sm: "18vw" }, // 👈 FIXED height for xs
+        }}
+      >
         {rows.length === 0 ? (
           <Typography
-            sx={{ py: "3vw", textAlign: "center", color: "rgba(227,192,120,0.4)", fontSize: "1.25vw" }}
+            sx={{
+              py: "3vw",
+              textAlign: "center",
+              color: "rgba(227,192,120,0.4)",
+              // fontSize: "1.25vw",
+              fontSize: { xs: "12px", sm: "1.25vw" }, // 👈 responsive font size
+            }}
           >
             No data available
           </Typography>
@@ -129,8 +164,8 @@ const CommodityTable = ({ commodities }) => {
           <Swiper
             modules={[Autoplay]}
             direction="vertical"
-            slidesPerView={4.2}
-            spaceBetween={10}
+            slidesPerView={4}
+            spaceBetween={0}
             loop={true}
             autoplay={{
               delay: 0,
@@ -138,7 +173,8 @@ const CommodityTable = ({ commodities }) => {
             }}
             speed={3000}
             allowTouchMove={false}
-            style={{ height: "18vw" }}
+            // style={{ height: "18vw" }}
+            style={{ height: "100%" }} // 👈 IMPORTANT
           >
             {rows.map((row, index) => (
               <SwiperSlide key={index}>
@@ -147,38 +183,81 @@ const CommodityTable = ({ commodities }) => {
                     display: "grid",
                     gridTemplateColumns: "1.4fr 0.8fr 0.8fr",
                     alignItems: "end",
+                    height: "100%",
+
                     py: "1vw",
-                    px: "1.5vw",
+                    px: { xs: "10px", sm: "1.5vw" }, // 👈 responsive padding
+
                     borderBottom: "1px solid rgba(80,90,100,0.18)",
-                    background: index % 2 === 0 ? "rgba(15,25,32,0.3)" : "transparent",
+                    background:
+                      index % 2 === 0 ? "rgba(15,25,32,0.3)" : "transparent",
                   }}
                 >
                   {/* Commodity */}
                   <Typography
                     sx={{
-                      fontSize: "1.24vw",
-                      fontWeight: 800,
-                      color: "#e8e0c8",
+                      // fontSize: "1.24vw",
+                      fontSize: { xs: "14px", sm: "1.24vw" }, // 👈 responsive font size
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "start",
                       gap: "0.3vw",
+                      fontWeight: 800,
+                      height: "100%",
+
+                      color: "#e8e0c8",
+                      gap: "0.3vw",
                     }}
                   >
                     {row.metal}
-                    <Typography sx={{ fontSize: "1vw", fontWeight: 400, color: "#e8e0c8" }}>
+                    <Typography
+                      sx={{
+                        // fontSize: "1vw",
+                        fontSize: { xs: "10px", sm: "1vw" }, // 👈 responsive font size
+
+                        fontWeight: 400,
+                        color: "#e8e0c8",
+                      }}
+                    >
                       {row.purity}
                     </Typography>
                   </Typography>
 
                   {/* Unit */}
-                  <Typography sx={{ fontSize: "1.18vw", color: "#d0d8e0", textAlign: "start" }}>
+                  <Typography
+                    sx={{
+                      // fontSize: "1.18vw",
+                      fontSize: { xs: "12px", sm: "1.18vw" }, // 👈 responsive font size
+                      height: "100%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "start",
+                      color: "#d0d8e0",
+                      textAlign: "start",
+                    }}
+                  >
                     {row.unit}
                   </Typography>
 
                   {/* ASK */}
-                  <Box sx={{ display: "flex", alignItems: "center", justifyContent: "start", gap: "0.5vw" }}>
-                    <Typography sx={{ fontSize: "1.32vw", fontWeight: 600, color: "#ff88aa" }}>
+                  <Box
+                    sx={{
+                      height: "100%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "start",
+                      gap: "0.5vw",
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        // fontSize: "1.32vw",
+                        fontSize: { xs: "14px", sm: "1.32vw" }, // 👈 responsive font size
+
+                        fontWeight: 600,
+                        color: "#ff88aa",
+                      }}
+                    >
                       {formatPrice(row.ask)}
                     </Typography>
                   </Box>

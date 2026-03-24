@@ -105,7 +105,9 @@ const SpotRate = () => {
       >
         <Typography
           sx={{
-            fontSize: "1.3vw",
+            // fontSize: "1.3vw",
+            fontSize: { xs: "13px", sm: "1.3vw" }, // 👈 responsive font size
+
             fontWeight: 600,
             letterSpacing: "0.25vw",
             color: "#88aaff",
@@ -117,7 +119,9 @@ const SpotRate = () => {
 
         <Typography
           sx={{
-            fontSize: "2.4vw",
+            // fontSize: "2.4vw",
+            fontSize: { xs: "24px", sm: "2.4vw" }, // 👈 responsive font size
+
             fontWeight: 800,
             letterSpacing: "0.18vw",
             textAlign: "center",
@@ -172,11 +176,15 @@ const SpotRate = () => {
         {/* Header with Metal Name + Image + HIGH/LOW */}
         <Box
           sx={{
-            height: "5.8vw",
+            // height: "5.8vw",
+            height: { xs: "50px", sm: "5.8vw" }, // 👈 responsive height
+
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            px: "1.8vw",
+            // px: "1.8vw",
+            px: { xs: "10px", sm: "1.8vw" }, // 👈 responsive padding
+
             borderBottom: "1px solid rgba(100,100,140,0.3)",
             bgcolor: "rgba(12,12,22,0.6)",
           }}
@@ -185,7 +193,9 @@ const SpotRate = () => {
           <Box sx={{ display: "flex", alignItems: "center", gap: "1vw" }}>
             <Typography
               sx={{
-                fontSize: "1.6vw",
+                // fontSize: "1.6vw",
+                fontSize: { xs: "16px", sm: "1.6vw" }, // 👈 responsive font size
+
                 fontWeight: 800,
                 letterSpacing: "0.3vw",
                 background: isGold
@@ -202,7 +212,8 @@ const SpotRate = () => {
               {isGold ? "GOLD" : "SILVER"}
             </Typography>
 
-            <Box sx={{ width: "4.5vw" }}>
+            <Box sx={{ width: { xs: "45px", sm: "4.5vw" } }}>
+              {/* <Box sx={{ width: "4.5vw" }}> */}
               <Box
                 component="img"
                 src={metalImg}
@@ -219,7 +230,9 @@ const SpotRate = () => {
           {/* Right: HIGH / LOW */}
           <Typography
             sx={{
-              fontSize: "1.5vw",
+              // fontSize: "1.5vw",
+              fontSize: { xs: "15px", sm: "1.5vw" }, // 👈 responsive font size
+
               letterSpacing: "0.15vw",
               opacity: 0.9,
               "& .hl-value-high": {
@@ -245,13 +258,16 @@ const SpotRate = () => {
         {/* Price Boxes */}
         <Box
           sx={{
-            p: "1.6vw 1.8vw",
+            // p: "1.6vw 1.8vw",
+            p: { xs: "16px 18px", sm: "1.6vw 1.8vw" }, // 👈 responsive padding
+
             display: "flex",
             flexDirection: "column",
             gap: "1.5vw",
           }}
         >
-          <Box sx={{ display: "flex", gap: "1.2vw" }}>
+          <Box sx={{ display: "flex", gap: { xs: "12px", sm: "1.2vw" } }}>
+            {/* <Box sx={{ display: "flex", gap: "1.2vw" }}> */}
             <PricePulse label="BID" value={data.bid} dir={bidDir} />
             <PricePulse label="ASK" value={data.ask} dir={askDir} />
           </Box>
@@ -268,7 +284,9 @@ const SpotRate = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          gap: "2vw",
+          // gap: "2vw",
+          gap: { xs: "20px", sm: "2vw" }, // 👈 responsive gap
+
           maxWidth: { xs: "100%", md: "58vw" },
           margin: { xs: 0, md: "0 auto" }, // xs = 0, from sm and above = centered
         }}
