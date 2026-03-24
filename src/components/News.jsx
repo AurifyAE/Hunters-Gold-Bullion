@@ -10,7 +10,7 @@ const NewsTicker = ({ newsItems = [] }) => {
     <Box
       sx={{
         width: "100%",
-        height: { xs: "50px", sm: "3vw" },
+        height: { xs: "40px", sm: "3vw" },
         display: "flex",
         alignItems: "center",
         overflow: "hidden",

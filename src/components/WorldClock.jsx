@@ -99,48 +99,59 @@ const WorldClockHorizontal = () => {
         </Typography>
       </Box>
 
-      {/* ✅ Dynamic Clocks */}
-      {CLOCKS.map((clock, index) => (
-        <Box
-          key={index}
-          sx={{
-            textAlign: "center",
-            width: { xs: "100%", sm: "auto" },
-          }}
-        >
-          <Typography
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: { xs: "10px", sm: "2vw" },
+          width: { xs: "100%", sm: "auto" },
+        }}
+      >
+        {/* ✅ Dynamic Clocks */}
+        {CLOCKS.map((clock, index) => (
+          <Box
+            key={index}
             sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: { xs: "center", sm: "flex-start" },
-              gap: { xs: "6px", sm: "0.5vw" },
-              fontSize: { xs: "14px", sm: "1.4vw" },
-              fontWeight: 600,
-              color: "#70DDF0",
+              textAlign: "center",
+              width: { xs: "100%", sm: "auto" },
             }}
           >
-            <Box
-              component="img"
-              src={clock.icon}
-              alt={clock.label}
+            <Typography
               sx={{
-                width: { xs: "20px", sm: "3vw" },
-                objectFit: "contain",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: { xs: "center", sm: "flex-start" },
+                gap: { xs: "6px", sm: "0.5vw" },
+                fontSize: { xs: "14px", sm: "1.4vw" },
+                fontWeight: 600,
+                color: "#70DDF0",
               }}
-            />
-            {clock.label}
-          </Typography>
+            >
+              <Box
+                component="img"
+                src={clock.icon}
+                alt={clock.label}
+                sx={{
+                  width: { xs: "20px", sm: "3vw" },
+                  objectFit: "contain",
+                }}
+              />
+              {clock.label}
+            </Typography>
 
-          <Typography
-            sx={{
-              fontSize: { xs: "16px", sm: "1.6vw" },
-              color: "#fff",
-            }}
-          >
-            {times.clocks?.[clock.label] || "--:-- AM"}
-          </Typography>
-        </Box>
-      ))}
+            <Typography
+              sx={{
+                fontSize: { xs: "16px", sm: "1.6vw" },
+                color: "#fff",
+              }}
+            >
+              {times.clocks?.[clock.label] || "--:-- AM"}
+            </Typography>
+          </Box>
+        ))}
+      </Box>
     </Box>
   );
 };

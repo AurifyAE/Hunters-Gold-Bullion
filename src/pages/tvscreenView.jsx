@@ -184,6 +184,7 @@ function TvScreen() {
         border="1px solid #D4F5F73F"
         flexWrap="wrap"
         zIndex="1"
+        width="100%"
         position="relative"
         margin="0"
       >
@@ -201,11 +202,15 @@ function TvScreen() {
             <Box
               sx={{
                 height: "auto",
-                width: "28vw",
-                marginBottom: "2vw",
+                width: { xs: "40vw", sm: "28vw" },
+                marginBottom: { xs: "20px", sm: "2vw" },
               }}
             >
-              <img src={JasMetalLogo} alt="" className="object-contain w-full" />
+              <img
+                src={JasMetalLogo}
+                alt=""
+                className="object-contain w-full"
+              />
             </Box>
 
             <WorldClock />
@@ -220,17 +225,17 @@ function TvScreen() {
           <PoweredByAurify />
         </Grid>
 
-        <Grid
-          xs={12}
+        <Box
           sx={{
             position: { xs: "none", sm: "fixed" },
-            bottom: { xs: "0", sm: "0" },
-            width: { xs: "90%" },
-            left: { xs: "0", sm: "0" },
+            bottom: { xs: "0" },
+            width: "100%",
+            left: { xs: "0" },
+            mt: { xs: "20px", sm: "0" },
           }}
         >
           <NewsTicker newsItems={news} />
-        </Grid>
+        </Box>
       </Grid>
     </Box>
   );

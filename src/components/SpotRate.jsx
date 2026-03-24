@@ -212,7 +212,7 @@ const SpotRate = () => {
               {isGold ? "GOLD" : "SILVER"}
             </Typography>
 
-            <Box sx={{ width: { xs: "45px", sm: "4.5vw" } }}>
+            <Box sx={{ width: { xs: "40px", sm: "4.5vw" } }}>
               {/* <Box sx={{ width: "4.5vw" }}> */}
               <Box
                 component="img"
