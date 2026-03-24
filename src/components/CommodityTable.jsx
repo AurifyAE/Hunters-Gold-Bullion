@@ -77,7 +77,7 @@ const CommodityTable = ({ commodities }) => {
     <Box
       sx={{
         width: "100%",
-        mt: "1.2vw",
+        mt: { xs: "20px", sm: "1.2vw" },
         borderRadius: "0.8vw",
         overflow: "hidden",
         border: "0.1vw solid rgba(177 227 241 / 0.51)",
@@ -104,7 +104,7 @@ const CommodityTable = ({ commodities }) => {
         <Typography
           sx={{
             // fontSize: "1.2vw",
-            fontSize: { xs: "12px", sm: "1.2vw" }, // 👈 responsive font size
+            fontSize: { xs: "14px", sm: "1.2vw" }, // 👈 responsive font size
             fontWeight: 600,
             color: "#e3c078",
             letterSpacing: "0.04vw",
@@ -117,7 +117,7 @@ const CommodityTable = ({ commodities }) => {
         <Typography
           sx={{
             // fontSize: "1.2vw",
-            fontSize: { xs: "12px", sm: "1.2vw" }, // 👈 responsive font size
+            fontSize: { xs: "14px", sm: "1.2vw" }, // 👈 responsive font size
 
             fontWeight: 600,
             color: "#e3c078",
@@ -130,7 +130,7 @@ const CommodityTable = ({ commodities }) => {
         <Typography
           sx={{
             // fontSize: "1.2vw",
-            fontSize: { xs: "12px", sm: "1.2vw" }, // 👈 responsive font size
+            fontSize: { xs: "14px", sm: "1.2vw" }, // 👈 responsive font size
 
             fontWeight: 600,
             color: "#e3c078",

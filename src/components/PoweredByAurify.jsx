@@ -15,7 +15,7 @@ const PoweredByAurify = () => {
         gap: { xs: "6px", sm: "0.6vw" }, // 👈 responsive gap
 
         // padding: "0.8vw 1.4vw",
-        padding: { xs: "8px 12px", sm: "0.8vw 1.4vw" }, // 👈 responsive padding
+        padding: { xs: "20px 12px", sm: "0.8vw 1.4vw" }, // 👈 responsive padding
 
         // margin: "0 auto",
         mt: "auto",

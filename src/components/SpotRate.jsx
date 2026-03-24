@@ -86,7 +86,7 @@ const SpotRate = () => {
           bgcolor: "rgba(20,20,35,0.65)",
           border: "0.1vw solid rgba(80,80,120,0.4)",
           borderRadius: "0.9vw",
-          p: "0.9vw 1.1vw",
+          p: { xs: "10px 15px", sm: "0.9vw 1.1vw" },
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
@@ -259,7 +259,7 @@ const SpotRate = () => {
         <Box
           sx={{
             // p: "1.6vw 1.8vw",
-            p: { xs: "16px 18px", sm: "1.6vw 1.8vw" }, // 👈 responsive padding
+            p: { xs: "10px 10px", sm: "1.6vw 1.8vw" }, // 👈 responsive padding
 
             display: "flex",
             flexDirection: "column",
