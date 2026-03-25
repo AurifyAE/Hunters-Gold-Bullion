@@ -172,6 +172,7 @@ function TvScreen() {
       </div>
       {/* Grid */}
       <Grid
+        className="custom-grid"
         container
         spacing={4}
         direction="row"
